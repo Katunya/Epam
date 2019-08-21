@@ -27,7 +27,7 @@ add.addEventListener('click', e => {
     UpdateAdd.innerHTML = "Add";
 
     UpdateAdd.addEventListener('click', e => {
-
+        event.preventDefault();
         f = validate.call(form);
         console.log(f);
         name1 = document.getElementById("nameInput");
