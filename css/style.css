@@ -80,6 +80,18 @@
     float: right;
     justify-content: center;
     color: #fff;
-    background: #343a40;
+    background-color: #343a40;
     border-radius: 23px;
+}
+
+.error-message{
+    color: #ff0000;
+}
+
+.sort{
+    background: url(../img/Up.png) no-repeat;
+    width: 18px;
+    height: 15px;
+    float:right;
+    margin-top:5px;
 }
