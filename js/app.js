@@ -112,6 +112,7 @@ table.addEventListener('click', event => {
         const UpdateAdd = document.getElementById("button-status");
 
         UpdateAdd.addEventListener('click', e => {
+            e.preventDefault();
             name1 = document.getElementById("nameInput");
             count = document.getElementById("countInput");
             price = document.getElementById("priceInput");
