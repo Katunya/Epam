@@ -1,18 +1,17 @@
 const form = document.getElementById("form-table");
 
-
-function Product(name, count, price) {
-    this.name = name;
-    this.count = count;
-    this.price = price;
+class Product {
+    constructor(name, count, price) {
+        this.name = name;
+        this.count = count;
+        this.price = price;
+    }
 }
 
 let product = new Array(6);// создаём начальный список товаров
 
 for (let i = 0; i < product.length; i++) {
-
     product[i] = new Product('Товар' + i, i, 1200 + i)
-
 }
 CreateTable(product.length);
 
@@ -21,9 +20,7 @@ CreateProduct();
 const add = document.getElementById('e')
 
 add.addEventListener('click', e => {
-
     let UpdateAdd = document.getElementById("button-status");
-
     UpdateAdd.innerHTML = "Add";
 
     UpdateAdd.addEventListener('click', e => {
@@ -38,7 +35,6 @@ add.addEventListener('click', e => {
             if (price.value == "") {
                 price.value = 0;
             }
-
             product.push(new Product(name1.value, count.value, price.value));
 
             name1.value = "";
@@ -48,16 +44,14 @@ add.addEventListener('click', e => {
             CreateTable(1);//добавляем одну строку
             CreateProduct();//создаём новый список товаров
         }
-
-
     })
-})
+});
 //фильтрация
-
 const search = document.getElementById("button-search")
 search.addEventListener('click', e => {
     Filter();
-})
+});
+
 //сортировка по цене
 const priceSort = document.getElementById('price');
 let x = false;
@@ -74,9 +68,9 @@ priceSort.addEventListener('click', e => {
         CreateProduct();
     }
     x = !x
-})
-//сортировка по имени
+});
 
+//сортировка по имени
 const nameSort = document.querySelector(".sort")
 
 let y = false;
@@ -87,19 +81,15 @@ nameSort.addEventListener('click', e => {
         nameSort.style.background = 'url(img/Up.png) no-repeat';
         CreateProduct();
     } else {
-
         nameSort.style.background = 'url(img/Down.png) no-repeat';
-
         product.reverse();
-
         CreateProduct();
 
     }
     y = !y
+});
 
-})
 // Удаление и редактирование товаров
-
 const table = document.getElementsByTagName("TBODY")[0];
 
 table.addEventListener('click', event => {
@@ -145,37 +135,24 @@ table.addEventListener('click', event => {
 
         })
     }
-})
-
+});
 
 function CreateProduct() {// вывод товаров в таблицу
 
-
-    const tbody = document.getElementsByTagName("TBODY")[0];
-
-    console.log(tbody.rows.length);
-    console.log(product.length);
-
+    const tbody = document.getElementsByTagName("tbody")[0];
     const nameList = document.querySelectorAll("td>a");
     const countList = document.querySelectorAll(".count");
     const priceList = document.querySelectorAll("td:nth-child(2)");
 
-
     for (let i = 0; i < product.length; i++) {
-
         nameList[i].innerHTML = product[i].name;
         countList[i].innerHTML = product[i].count;
         priceList[i].innerHTML = '$' + String(product[i].price);
 
     }
-
-
 }
 
-
 function SortPrice() {// сортировка по цене
-
-
     for (let i = 0; i < product.length - 1; i++) {
 
         for (let j = 0; j < product.length - 1 - i; j++) {
@@ -186,15 +163,12 @@ function SortPrice() {// сортировка по цене
                 product[j] = product[j + 1];
                 product[j + 1] = buf;
             }
-
         }
-
     }
     return product;
 }
 
 function SortName() {// пузырьковая сортировка по имени
-
     for (let i = 0; i < product.length - 1; i++) {
 
         for (let j = 0; j < product.length - 1 - i; j++) {
@@ -213,69 +187,57 @@ function SortName() {// пузырьковая сортировка по име�
 }
 
 function Filter() {
-
     const filter = document.getElementsByTagName('input');//находим все input
-
-
     const trs = document.querySelectorAll('tr');// находим все строки
 
     for (let j = 1; j < trs.length; j++) {// при каждом нажатии делаем строки видимыми
-
         trs[j].style.display = "";
-
     }
-
     if (filter[0].value != "") {
-
 // находим по подстроке название товара, если не удовлетворяет критериям - прячем строку таблицы
         for (let j = 1; j < trs.length; j++) {
-
             if (String(product[j - 1].name).toUpperCase().indexOf(String(filter[0].value).toUpperCase()) == -1) {
-
                 trs[j].style.display = 'none';
-
             }
-
-
         }
     }
-
-
 }
 
 function CreateTable(n)//структура таблицы
-
 {
-
-    const tbody = document.getElementsByTagName("TBODY")[0];
-
+    const tbody = document.getElementsByTagName("tbody")[0];
     for (let i = 0; i < n; i++) {
-        let row = document.createElement("TR");
-        let td1 = document.createElement("TD");
-        let td2 = document.createElement("TD");
-        let td3 = document.createElement("TD");
+        let row = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
         row.appendChild(td1);
         row.appendChild(td2);
         row.appendChild(td3);
         tbody.appendChild(row);
+
         row.setAttribute("number", i);
         let link = document.createElement("a");
+
         td1.appendChild(link);
         link.setAttribute("href", "#");
         let div = document.createElement("div");
         td1.appendChild(div);
         div.classList.add('count');
+
         let buttonDelete = document.createElement("div");
         let buttonEdit = document.createElement("div");
         buttonEdit.classList.add('button');
         buttonDelete.classList.add('button');
         td3.appendChild(buttonDelete);
         td3.appendChild(buttonEdit);
+
         let DeleteLink = document.createElement("a");
         buttonDelete.appendChild(DeleteLink);
         DeleteLink.setAttribute("href", "#");
         DeleteLink.setAttribute("number", i);
         DeleteLink.innerHTML = "Delete";
+
         let EditLink = document.createElement("a");
         buttonEdit.appendChild(EditLink);
         EditLink.setAttribute("href", "#");
@@ -288,7 +250,7 @@ function CreateTable(n)//структура таблицы
 
 function showError(container, errorMessage) {
     container.className = 'error';
-    let msgElem = document.createElement('span');
+    const msgElem = document.createElement('span');
     msgElem.className = "error-message";
     msgElem.innerHTML = errorMessage;
     container.appendChild(msgElem);
@@ -296,16 +258,13 @@ function showError(container, errorMessage) {
 
 function resetError(container) {
     container.className = '';
-    if (container.lastChild.className == "error-message") {
+    if (container.lastChild.className === "error-message") {
         container.removeChild(container.lastChild);
     }
 }
 
-
 function validate() {
     let err = 0;
-
-
     let elems = this.elements;
 
     elems.name.style.border = "1px solid green";
@@ -327,7 +286,6 @@ function validate() {
         err++;
     }
 
-
     resetError(elems.count.parentNode);
     if (!elems.count.value) {
         showError(elems.count.parentNode, ' Укажите количество.');
@@ -338,8 +296,6 @@ function validate() {
         elems.count.style.border = "1px solid #ff0000";
         err++;
     }
-
-
     if (err > 0) {
         return false;
     } else {
@@ -348,6 +304,4 @@ function validate() {
 
         return true;
     }
-
-
 }

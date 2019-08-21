@@ -1,7 +1,4 @@
-/* menu block
-**************************/
-
-.menu{
+.menu {
     display: flex;
     width: 100%;
     height: 38px;
@@ -9,42 +6,56 @@
     margin-bottom: 20px;
 }
 
-.menu > div{
+.menu > div {
     display: flex;
     width: 33.3%;
 }
-
 
 .menu_add-update {
     justify-content: flex-end;
 }
 
-/* Table
-**************************/
+.info-table_name {
+    width: 40%;
+}
 
-.info-table_name{width: 40%;}
-.info-table_price{width: 25%;}
-.info-table_actions{width: 35%;}
+.info-table_price {
+    width: 25%;
+}
 
-#table thead > tr{
+.info-table_actions {
+    width: 35%;
+}
+
+#table thead > tr {
     height: 50px;
     line-height: 50px;
 }
 
-#table th{position: relative;}
+#table th {
+    position: relative;
+}
 
-#info-table tbody > tr{
+#info-table tbody > tr {
     height: 40px;
     line-height: 40px;
 }
 
-#table td{text-align: center;}
+#table td {
+    text-align: center;
+}
 
-#table tbody td{position: relative;}
+#table tbody td {
+    position: relative;
+}
 
-#table tr td:first-child{text-align: left; }
+#table tr td:first-child {
+    text-align: left;
+}
 
-#table td button:first-child{margin-right: 20px;}
+#table td button:first-child {
+    margin-right: 20px;
+}
 
 .column {
     display: inline-block;
@@ -55,16 +66,14 @@
     margin-left: 40px;
 }
 
-/* Table sort button */
-
-#table th > button{
+#table th > button {
     position: absolute;
     right: 20px;
     background-color: #fff;
     border: none;
 }
 
-.count{
+.count {
     position: relative;
     display: flex;
     width: 45px;
