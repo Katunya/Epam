@@ -87,30 +87,46 @@ nameSort.addEventListener('click', e => {
 });
 
 // Удаление и редактирование товаров
-const table = document.getElementsByTagName("TBODY")[0];
+const table = document.getElementsByTagName("tbody")[0];
+
+function callbackFactory() {
+    let lastCallback = null;
+    return function (callback) {
+        if (lastCallback) {
+            const element = document.getElementById("button-status");
+            element.removeEventListener('click', lastCallback, false);
+        }
+        const cb = function (e) {
+            callback.call(this, e);
+        };
+        lastCallback = cb;
+        return cb;
+    }
+}
+
+const callbackCaller = callbackFactory();
 
 table.addEventListener('click', event => {
-
     let target = event.target; // где был клик?
+
     if (target.innerHTML == "Delete") {
         let confirmation = confirm("Вы уверены?");
         if (confirmation) {
-            const number = target.getAttribute("number");
+            // const number = target.getAttribute("number");
             product.splice(target.parentNode.parentNode.parentNode.rowIndex - 1, 1);//удаляем товар из этой строки
             table.deleteRow(target.parentNode.parentNode.parentNode.rowIndex);
         }
     } else if (target.innerHTML == "Edit") {
         const c = document.querySelector(".column>button");
-
-        c.innerHTML = "Update";
-        const number = target.getAttribute("number");
         const UpdateAdd = document.getElementById("button-status");
+        c.innerHTML = "Update";
 
-        UpdateAdd.addEventListener('click', e => {
+        const editHandler = e => {
             e.preventDefault();
-            name1 = document.getElementById("nameInput");
-            count = document.getElementById("countInput");
-            price = document.getElementById("priceInput");
+            const number = target.getAttribute("number");
+            const name1 = document.getElementById("nameInput"),
+                count = document.getElementById("countInput"),
+                price = document.getElementById("priceInput");
             f = validate.call(form);
             if ((name1.value != "") && (f)) {
 
@@ -128,7 +144,12 @@ table.addEventListener('click', event => {
                 price.value = "";
                 CreateProduct();
             }
-        })
+        };
+
+        UpdateAdd.addEventListener(
+            'click',
+            callbackCaller(editHandler)
+        );
     }
 });
 
