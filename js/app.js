@@ -82,7 +82,6 @@ nameSort.addEventListener('click', e => {
         nameSort.style.background = 'url(img/Down.png) no-repeat';
         product.reverse();
         CreateProduct();
-
     }
     y = !y
 });
