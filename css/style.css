@@ -63,7 +63,7 @@
 }
 
 .column:last-child {
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 #table th > button {
@@ -93,4 +93,10 @@
     background: url(../img/Up.png) no-repeat;
     width: 18px;
     height: 18px;
+}
+
+.button {
+    display: inline-block;
+    margin-right: 25px;
+    height: 20px;
 }

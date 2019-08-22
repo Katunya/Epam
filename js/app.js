@@ -222,15 +222,13 @@ function CreateTable(n)//структура таблицы
         td3.appendChild(buttonDelete);
         td3.appendChild(buttonEdit);
 
-        let DeleteLink = document.createElement("a");
+        let DeleteLink = document.createElement("button");
         buttonDelete.appendChild(DeleteLink);
-        DeleteLink.setAttribute("href", "#");
         DeleteLink.setAttribute("number", i);
         DeleteLink.innerHTML = "Delete";
 
-        let EditLink = document.createElement("a");
+        let EditLink = document.createElement("button");
         buttonEdit.appendChild(EditLink);
-        EditLink.setAttribute("href", "#");
         EditLink.setAttribute("number", i);
         EditLink.innerHTML = "Edit";
     }
