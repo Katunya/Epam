@@ -38,7 +38,7 @@ add.addEventListener('click', e => {
             name1.value = "";
             count.value = "";
             price.value = "";
-            UpdateAdd.innerHTML = "Add/Update";
+            UpdateAdd.innerHTML = "Add";
             CreateTable(1);//добавляем одну строку
             CreateProduct();//создаём новый список товаров
         }
