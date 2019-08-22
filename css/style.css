@@ -27,33 +27,33 @@
     width: 35%;
 }
 
-#table thead > tr {
+.table thead > tr {
     height: 50px;
     line-height: 50px;
 }
 
-#table th {
+.table th {
     position: relative;
 }
 
-#info-table tbody > tr {
+.info-table tbody > tr {
     height: 40px;
     line-height: 40px;
 }
 
-#table td {
+.table td {
     text-align: center;
 }
 
-#table tbody td {
+.table tbody td {
     position: relative;
 }
 
-#table tr td:first-child {
+.table tr td:first-child {
     text-align: left;
 }
 
-#table td button:first-child {
+.table td button:first-child {
     margin-right: 20px;
 }
 
@@ -71,6 +71,7 @@
     right: 20px;
     background-color: #fff;
     border: none;
+    outline: none;
 }
 
 .count {
@@ -84,14 +85,12 @@
     border-radius: 23px;
 }
 
-.error-message{
+.error-message {
     color: #ff0000;
 }
 
-.sort{
+.sort {
     background: url(../img/Up.png) no-repeat;
     width: 18px;
-    height: 15px;
-    float:right;
-    margin-top:5px;
+    height: 18px;
 }

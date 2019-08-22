@@ -17,16 +17,14 @@ CreateTable(product.length);
 
 CreateProduct();
 
-const add = document.getElementById('e')
-
+const add = document.getElementById('add');
 add.addEventListener('click', e => {
     let UpdateAdd = document.getElementById("button-status");
     UpdateAdd.innerHTML = "Add";
 
     UpdateAdd.addEventListener('click', e => {
-        e.preventDefault();
         f = validate.call(form);
-        console.log(f);
+        e.preventDefault()
         name1 = document.getElementById("nameInput");
         count = document.getElementById("countInput");
         price = document.getElementById("priceInput");
@@ -46,6 +44,7 @@ add.addEventListener('click', e => {
         }
     })
 });
+
 //фильтрация
 const search = document.getElementById("button-search")
 search.addEventListener('click', e => {
@@ -74,7 +73,6 @@ priceSort.addEventListener('click', e => {
 const nameSort = document.querySelector(".sort")
 
 let y = false;
-
 nameSort.addEventListener('click', e => {
     SortName();
     if (y) {
@@ -95,18 +93,16 @@ const table = document.getElementsByTagName("TBODY")[0];
 table.addEventListener('click', event => {
 
     let target = event.target; // где был клик?
-
     if (target.innerHTML == "Delete") {
         let confirmation = confirm("Вы уверены?");
         if (confirmation) {
             const number = target.getAttribute("number");
             product.splice(target.parentNode.parentNode.parentNode.rowIndex - 1, 1);//удаляем товар из этой строки
-            console.log(product.length);
-            console.log(target.parentNode.parentNode.parentNode.rowIndex);
             table.deleteRow(target.parentNode.parentNode.parentNode.rowIndex);
         }
     } else if (target.innerHTML == "Edit") {
         const c = document.querySelector(".column>button");
+
         c.innerHTML = "Update";
         const number = target.getAttribute("number");
         const UpdateAdd = document.getElementById("button-status");
@@ -133,7 +129,6 @@ table.addEventListener('click', event => {
                 price.value = "";
                 CreateProduct();
             }
-
         })
     }
 });
@@ -149,7 +144,6 @@ function CreateProduct() {// вывод товаров в таблицу
         nameList[i].innerHTML = product[i].name;
         countList[i].innerHTML = product[i].count;
         priceList[i].innerHTML = '$' + String(product[i].price);
-
     }
 }
 
@@ -159,7 +153,6 @@ function SortPrice() {// сортировка по цене
         for (let j = 0; j < product.length - 1 - i; j++) {
 
             if (product[j].price > product[j + 1].price) {
-
                 let buf = product[j];
                 product[j] = product[j + 1];
                 product[j + 1] = buf;
@@ -175,22 +168,18 @@ function SortName() {// пузырьковая сортировка по име�
         for (let j = 0; j < product.length - 1 - i; j++) {
 
             if (product[j + 1].name < product[j].name) {
-
                 let buf = product[j + 1];
                 product[j + 1] = product[j];
                 product[j] = buf;
-
             }
-
         }
     }
     return product;
 }
 
 function Filter() {
-    const filter = document.getElementsByTagName('input');//находим все input
-    const trs = document.querySelectorAll('tr');// находим все строки
-
+    const filter = document.getElementsByTagName('input');
+    const trs = document.querySelectorAll('tr');
     for (let j = 1; j < trs.length; j++) {// при каждом нажатии делаем строки видимыми
         trs[j].style.display = "";
     }
@@ -244,8 +233,6 @@ function CreateTable(n)//структура таблицы
         EditLink.setAttribute("href", "#");
         EditLink.setAttribute("number", i);
         EditLink.innerHTML = "Edit";
-
-
     }
 }
 
@@ -268,12 +255,9 @@ function validate() {
     let err = 0;
     let elems = this.elements;
 
-    elems.name.style.border = "1px solid green";
-    elems.count.style.border = "1px solid green";
-    console.log(elems.name.style);
     resetError(elems.name.parentNode);
     if (!elems.name.value) {
-        showError(elems.name.parentNode, ' Укажите наименование.');
+        showError(elems.name.parentNode, ' Укажите наименование');
         elems.name.style.border = "1px solid #ff0000";
         err++;
 
@@ -282,7 +266,7 @@ function validate() {
         elems.name.style.border = "1px solid #ff0000";
         err++;
     } else if (elems.name.value.length > 15) {
-        showError(elems.name.parentNode, 'Длина поля должна быть не более 15 знаков');
+        showError(elems.name.parentNode, 'Максимальная длина 15 букв');
         elems.name.style.border = "1px solid #ff0000";
         err++;
     }
@@ -302,7 +286,6 @@ function validate() {
     } else {
         elems.name.removeAttribute("style");
         elems.count.removeAttribute("style");
-
         return true;
     }
 }

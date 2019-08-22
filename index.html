@@ -6,11 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
-
 </head>
 <body>
-
-
 <div class="container">
 	<div class="menu">
 		<div class="menu__search-text">
@@ -19,32 +16,25 @@
 		<div class="menu__search-button">
 			<button class="btn btn-dark" id="button-search">Search</button>
 		</div>
-		<div class="menu_add-update" id="e">
+		<div class="menu_add-update" id="add">
 			<button type="button" class="btn btn-dark">Add New</button>
 		</div>
-
 	</div>
-
 	<table class="table table-bordered" cellspacing="0" id="table">
 		<tr>
 			<th class="info-table_name" scope="col">Name
 				<button type="button" class="sort" id="sort-name"></button>
-
 			</th>
-
 			<th class="info-table_price" scope="col">Price
 				<button type="button" id="price" class="sort"></button>
 			</th>
-
 			<th class="info-table_actions" scope="col">Actions</th>
 		</tr>
 	</table>
 	<form id="form-table">
-
 		<div class="column">
 			<label> Name: (*requred field)<br> <input id="nameInput" name="name" type="text" size="30"/> </label>
 		</div>
-
 		<div class="column">
 			<label> Count:<br> <input id="countInput" name="count" type="text" size="10"/> </label>
 		</div>
@@ -53,7 +43,7 @@
 		</div>
 
 		<div class="column button">
-			<button id="button-status" class="btn btn-dark" >Add/Update</button>
+			<button id="button-status" class="btn btn-dark">Add/Update</button>
 		</div>
 	</form>
 </div>
